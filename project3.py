@@ -22,7 +22,7 @@ with open('logs.txt') as f:
             total_requests += 1
 
             month = date.month
-            if month in monthly_requests
+            if month in monthly_requests:
                 monthly_requests[month] += 1
             else:
                 monthly_requests[month] = 1
