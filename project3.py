@@ -7,3 +7,8 @@ response = requests.get(url)
 
 with open('logs.txt', 'w') as f:
   f.write(response.text)
+
+# Parse logs
+total_requests = 0
+monthly_requests = {}
+
