@@ -22,7 +22,7 @@ with open('logs.txt') as f:
             total_requests += 1
 
             month = date.month
-            if month in monthly_requests:
+            if month in monthly_requests
                 monthly_requests[month] += 1
             else:
                 monthly_requests[month] = 1
@@ -39,3 +39,8 @@ print()
 print('Monthly Breakdown:')
 for month, count in monthly_requests.items():
   print(f'- {datetime.date(1900, month, 1).strftime("%B")}: {count}')
+  
+print()
+print('Total numbers of first six months: ', total_first_six_months)
+print()
+print(f'Total requests: {total_requests}')
