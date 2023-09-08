@@ -28,3 +28,14 @@ with open('logs.txt') as f:
                 monthly_requests[month] = 1
         except ValueError:
             pass  # Ignore lines with incorrect date format
+        
+# Calculate the total requests for the first six months
+total_first_six_months = sum(monthly_requests.get(month, 0) for month in range (1, 7))
+# Print results 
+print('Analytics Report')
+print('-'*15)     
+
+print()
+print('Monthly Breakdown:')
+for month, count in monthly_requests.items():
+  print(f'- {datetime.date(1900, month, 1).strftime("%B")}: {count}')
