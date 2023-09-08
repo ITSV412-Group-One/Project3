@@ -1,5 +1,5 @@
 import requests 
-import datetime 
+import datetime
 
 # Download log file
 url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
@@ -20,5 +20,11 @@ with open('logs.txt') as f:
         try:
             date = datetime.datetime.strptime(date_str, '%d/%b/%Y:%H:%M:%S')
             total_requests += 1
-            
-            
+
+            month = date.month
+            if month in monthly_requests:
+                monthly_requests[month] += 1
+            else:
+                monthly_requests[month] = 1
+        except ValueError:
+            pass  # Ignore lines with incorrect date format
