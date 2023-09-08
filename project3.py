@@ -12,3 +12,8 @@ with open('logs.txt', 'w') as f:
 total_requests = 0
 monthly_requests = {}
 
+with open('logs.txt') as f:
+    for line in f:
+        parts = line.split()
+        if len(parts) >= 4:
+            date_str = parts[3].strip('[') # Remove the leading '['
