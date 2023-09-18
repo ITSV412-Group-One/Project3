@@ -22,7 +22,7 @@ with open('logs.txt') as f:
             total_requests += 1
 
             month = date.month
-            if month in monthly_requests
+            if month in monthly_requests:
                 monthly_requests[month] += 1
             else:
                 monthly_requests[month] = 1
@@ -43,4 +43,9 @@ for month, count in monthly_requests.items():
 print()
 print('Total numbers of first six months: ', total_first_six_months)
 print()
-print(f'Total requests: {total_requests}')
+print(f'Total requests: {total_requests}') 
+
+# Calculates the percentage of most requests that were not successfull // Maya 
+failed_requests = 0
+
+
