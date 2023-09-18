@@ -51,3 +51,8 @@ failed_requests = 0
 with open('logs.txt') as f:
   for line in f:
     parts = line.split()
+    if len(parts) >= 9:
+      status_code = parts[8]
+      if status_code.startswith('4'):
+        failed_requests += 1
+        
