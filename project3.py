@@ -45,3 +45,5 @@ print('Total numbers of first six months: ', total_first_six_months)
 print()
 print(f'Total requests: {total_requests}')
 
+# Calculates the percentage of most requests that were not successful 
+failed_requests = 0 
