@@ -43,9 +43,5 @@ for month, count in monthly_requests.items():
 print()
 print('Total numbers of first six months: ', total_first_six_months)
 print()
-print(f'Total requests: {total_requests}') 
-
-# Calculates the percentage of most requests that were not successfull // Maya 
-failed_requests = 0
-
+print(f'Total requests: {total_requests}')
 
