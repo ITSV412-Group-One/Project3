@@ -47,3 +47,7 @@ print(f'Total requests: {total_requests}')
 
 # Calculates the percentage of most requests that were not successful 
 failed_requests = 0 
+
+with open('logs.txt') as f:
+  for line in f:
+    parts = line.split()
