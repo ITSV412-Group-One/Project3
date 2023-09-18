@@ -45,7 +45,7 @@ print('Total numbers of first six months: ', total_first_six_months)
 print()
 print(f'Total requests: {total_requests}')
 
-# Calculates the percentage of most requests that were not successful 
+# Calculates the percentage of requests that were not successful 
 failed_requests = 0 
 
 with open('logs.txt') as f:
@@ -58,5 +58,6 @@ with open('logs.txt') as f:
         
 percentage_failed = failed_requests / total_requests * 100
 
+# Outputs percentage of requests that were not successful  
 print()
 print(f'Percentage of requests that failed: {percentage_failed:.2f}%')
