@@ -59,3 +59,4 @@ with open('logs.txt') as f:
 percentage_failed = failed_requests / total_requests * 100
 
 print()
+print(f'Percentage of requests that failed: {percentage_failed:.2f}%')
