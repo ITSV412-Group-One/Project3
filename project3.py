@@ -56,3 +56,6 @@ with open('logs.txt') as f:
       if status_code.startswith('4'):
         failed_requests += 1
         
+percentage_failed = failed_requests / total_requests * 100
+
+print()
