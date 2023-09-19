@@ -14,6 +14,8 @@ with open('logs.txt', 'w') as f:
 # Variables
 total_requests = 0
 monthly_requests = {}
+weekly_requests = {}  
+file_requests = {}  
 
 with open('logs.txt') as f:
   for line in f:
@@ -29,11 +31,20 @@ with open('logs.txt') as f:
                 monthly_requests[month] += 1
             else:
                 monthly_requests[month] = 1
+            # Calculate the week number and update weekly_requests
+            week_number = date.strftime('%U-%Y')
+            if week_number in weekly_requests:
+                weekly_requests[week_number] += 1
+            else:
+                weekly_requests[week_number] = 1
+                  
         except ValueError:
             pass  # Ignore lines with incorrect date format
         
 # Calculate the total requests for the first six months
 total_first_six_months = sum(monthly_requests.get(month, 0) for month in range (1, 7))
+# Find the least-requested file
+least_requested_file = min(file_requests, key=file_requests.get)
 # Print results 
 print('Analytics Report')
 print('-'*15)     
@@ -47,6 +58,15 @@ print()
 print('Total numbers of first six months: ', total_first_six_months)
 print()
 print(f'Total requests: {total_requests}')
+#Added Weekly Breakdown 
+print()
+print('Weekly Breakdown:')
+for week, count in weekly_requests.items():
+    print(f'- Week {week}: {count}')
+#Added Least Requested File and the number of requests
+print()
+print(f'Least Requested File: {least_requested_file}')
+print(f'Request Count: {file_requests[least_requested_file]}')
 
 
 # Calculates the percentage of requests that were not successful // Maya 
