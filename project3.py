@@ -8,7 +8,7 @@ response = requests.get(url)
 with open('logs.txt', 'w') as f:
   f.write(response.text)
 
-# Parse logs
+# Variables
 total_requests = 0
 monthly_requests = {}
 
@@ -76,5 +76,23 @@ print(f'Percentage of requests that failed: {percentage_failed:.2f}%')
 
 
 # Calculates the percentage of requests redirected somewhere else // Andres 
+
+# Variables 
+totalResponses = 0 
+redirectedResponses = 0
+
+with open('logs.txt', "r") as file:
+   for line in file:
+      sections = line.split() # Will just split everything at an empty space " "
+      if len(sections) >= 2: # This checks if there are more than two sections in the line since the shortest lines were just "local     index.html"
+         try:
+            statusCode = int(sections[-2]) # Goes to the second to the last "section" since that is where the status code is located
+            totalResponses += 1
+            if 300 <= statusCode < 400:
+               redirectedResponses += 1
+         except:
+            pass
+         
+print("Percentage of Redirected Repsonses: " + str(round((redirectedResponses/totalResponses)* 100, 2)) + "%")
 
 # /////////////////////////////////////////////////////
