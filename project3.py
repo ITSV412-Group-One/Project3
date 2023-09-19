@@ -1,3 +1,6 @@
+import collections
+from distutils import text_file
+import re
 import requests 
 import datetime
 
@@ -71,7 +74,60 @@ print(f'Percentage of requests that failed: {percentage_failed:.2f}%')
 
 
 # Handles day-level requests and most requested file // Mel
+# Question 1 : request for each day
 
+with open('logs.txt') as f:
+    first_line = text_file.readlines()[1]
+    first_datetime = first_line.split()[3]
+    clean_datetime = datetime.strptime(first_datetime, '[%d/%b/%Y:%H:%M:%S')
+    first_date = clean_datetime.date()
+
+# begins process 
+file = open("logs.txt", "f")
+count = 0
+Q1_dates = 0
+
+for line in file:
+   count += 1 
+
+   # remove lines without date
+   if ("["in line) != True:
+      continue 
+   # searches for datetime and only extracts date
+   date_str = re.search('\d{2}/\D{3}/\d{4}', line)
+   clean_datetime = datetime.strptime(date_str.group(), '%d/%b/%Y')
+   line_date = clean_datetime.date()
+
+delta = datetime.timedelta(days=1)
+
+if line_date == first_date:
+      Q1_dates +=1
+else :
+   print("There were", Q1_dates, "request on", first_date)
+   Q1_dates = 0 
+   first_date += delta
+
+file.close()
+# doesn't print last date request
+
+# Question 5: the most requested file 
+
+file = open("logs.txt", "f" )
+
+clean_log = []
+
+for line in file: 
+  try:
+      clean_log.append(line[line.index("GET")+4:line.index("HTTP")])
+  except:
+      pass
+  
+counter = collections.Counter(clean_log)
+
+for count in counter.most_common(1):
+   print("The most requested file was", str(count[0])) + "and was requested", str(count[1], "times")
+   file.close()
+ 
 # /////////////////////////////////////////////////////
 
 
